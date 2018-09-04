@@ -1,0 +1,12 @@
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\DataModels.dll.config
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\DataModels.dll
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\DataModels.pdb
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\EntityFramework.dll
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\EntityFramework.xml
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\obj\Debug\DataModels.csprojAssemblyReference.cache
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\obj\Debug\DataModels.csproj.CoreCompileInputs.cache
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\obj\Debug\DataModels.csproj.CopyComplete
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\obj\Debug\DataModels.dll
+C:\Users\jatin.a.dhingra\source\repos\WebApplication1\DataModels\obj\Debug\DataModels.pdb
