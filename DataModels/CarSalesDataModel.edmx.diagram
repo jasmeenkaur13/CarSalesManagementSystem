@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="CarSalesModel.Owners_Cars_Ref" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="CarSalesModel.FK_Car_Owner_Ref" ManuallyRouted="false" />
         <AssociationConnector Association="CarSalesModel.FK_Owner_Car_Ref" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CarSalesModel.Enquiry" Width="1.5" PointX="1.75" PointY="4.875" />
+        <AssociationConnector Association="CarSalesModel.FK_Car_Enquiry" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,6 +17,7 @@ namespace DataModels
         public AdvertisedCar()
         {
             this.Owners_Cars_Ref = new HashSet<Owners_Cars_Ref>();
+            this.Enquiries = new HashSet<Enquiry>();
         }
     
         public int ID { get; set; }
@@ -29,5 +30,6 @@ namespace DataModels
         public Nullable<decimal> AdvertisedAmount { get; set; }
     
         public virtual ICollection<Owners_Cars_Ref> Owners_Cars_Ref { get; set; }
+        public virtual ICollection<Enquiry> Enquiries { get; set; }
     }
 }

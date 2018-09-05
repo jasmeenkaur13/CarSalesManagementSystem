@@ -28,5 +28,6 @@ namespace DataModels
         public DbSet<AdvertisedCar> AdvertisedCars { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Owners_Cars_Ref> Owners_Cars_Ref { get; set; }
+        public DbSet<Enquiry> Enquiries { get; set; }
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="CarOwnerRefernceDTO.cs" />
     <Compile Include="AdvertisedCarDetailsDTO.cs" />
     <Compile Include="AdvertisedCarDTO.cs" />
+    <Compile Include="EnquiryDTO.cs" />
     <Compile Include="OwnerDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

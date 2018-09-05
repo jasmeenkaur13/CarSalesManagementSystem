@@ -13,6 +13,7 @@
     <Property Name="DAPAmount" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="AdvertisedAmount" Type="Decimal" Precision="16" Scale="2" />
     <NavigationProperty Name="Owners_Cars_Ref" Relationship="Self.FK_Car_Owner_Ref" FromRole="AdvertisedCars" ToRole="Owners_Cars_Ref" />
+    <NavigationProperty Name="Enquiries" Relationship="CarSalesModel.FK_Car_Enquiry" FromRole="AdvertisedCar" ToRole="Enquiry" />
   </EntityType>
   <EntityType Name="Owner">
     <Key>
@@ -73,5 +74,33 @@
       <End Role="Owners" EntitySet="Owners" />
       <End Role="Owners_Cars_Ref" EntitySet="Owners_Cars_Ref" />
     </AssociationSet>
+    <EntitySet Name="Enquiries" EntityType="CarSalesModel.Enquiry" />
+    <AssociationSet Name="FK_Car_Enquiry" Association="CarSalesModel.FK_Car_Enquiry">
+      <End Role="AdvertisedCar" EntitySet="AdvertisedCars" />
+      <End Role="Enquiry" EntitySet="Enquiries" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="EnquiryId" />
+    </Key>
+    <Property Name="EnquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AdvertisedCar" Relationship="CarSalesModel.FK_Car_Enquiry" FromRole="Enquiry" ToRole="AdvertisedCar" />
+  </EntityType>
+  <Association Name="FK_Car_Enquiry">
+    <End Type="CarSalesModel.AdvertisedCar" Role="AdvertisedCar" Multiplicity="1" />
+    <End Type="CarSalesModel.Enquiry" Role="Enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdvertisedCar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Enquiry">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

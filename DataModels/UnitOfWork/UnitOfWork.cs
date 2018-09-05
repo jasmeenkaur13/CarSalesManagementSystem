@@ -21,6 +21,7 @@ namespace DataModels.UnitOfWork
         private GenericRepository<Owner> _ownerRepository;
         private GenericRepository<AdvertisedCar> _carRepository;
         private GenericRepository<Owners_Cars_Ref> _carOwnerRefRepository;
+        private GenericRepository<Enquiry> _enquiryRepository;
         #endregion
 
         public UnitOfWork()
@@ -29,6 +30,19 @@ namespace DataModels.UnitOfWork
         }
 
         #region Public Repository Creation properties...
+
+        /// <summary>
+        /// Get/Set Property for product repository.
+        /// </summary>
+        public GenericRepository<Enquiry> EnquiryRepository
+        {
+            get
+            {
+                if (this._enquiryRepository == null)
+                    this._enquiryRepository = new GenericRepository<Enquiry>(_context);
+                return _enquiryRepository;
+            }
+        }
 
         /// <summary>
         /// Get/Set Property for product repository.

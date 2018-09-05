@@ -37,9 +37,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,14 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServiceContracts\Services\ICarOwnerReferenceService.cs" />
-    <Compile Include="ServiceContracts\Services\IAdvertiseCarDetailsService.cs" />
-    <Compile Include="Services\ApplicationServices\AdvertisedCarDetailService.cs" />
-    <Compile Include="Services\ApplicationServices\AdvertisedCarService.cs" />
-    <Compile Include="Services\ApplicationServices\CarOwnerReferenceService.cs" />
-    <Compile Include="Services\ApplicationServices\OwnerService.cs" />
-    <Compile Include="ServiceContracts\Services\IAdvertiseCarService.cs" />
-    <Compile Include="ServiceContracts\Services\IOwnerService.cs" />
+    <Compile Include="ServiceContracts\ICarOwnerReferenceService.cs" />
+    <Compile Include="ServiceContracts\IAdvertiseCarDetailsService.cs" />
+    <Compile Include="ServiceContracts\IEnquiryService.cs" />
+    <Compile Include="ServiceContracts\IOwnerValidationService.cs" />
+    <Compile Include="Services\AdvertisedCarDetailService.cs" />
+    <Compile Include="Services\AdvertisedCarService.cs" />
+    <Compile Include="Services\CarOwnerReferenceService.cs" />
+    <Compile Include="Services\EnquiryService.cs" />
+    <Compile Include="Services\OwnerValidationService.cs" />
+    <Compile Include="Services\OwnerService.cs" />
+    <Compile Include="ServiceContracts\IAdvertiseCarService.cs" />
+    <Compile Include="ServiceContracts\IOwnerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +69,7 @@
       <Name>DataTransferObjects</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

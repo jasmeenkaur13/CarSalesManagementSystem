@@ -69,6 +69,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarSalesDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enquiry.cs">
+      <DependentUpon>CarSalesDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="GenericRepository\GenericRepository.cs" />
     <Compile Include="Owner.cs">
       <DependentUpon>CarSalesDb.tt</DependentUpon>

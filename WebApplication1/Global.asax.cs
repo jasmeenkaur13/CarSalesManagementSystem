@@ -5,7 +5,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Newtonsoft.Json;
 
-namespace WebApplication1
+namespace WebServices
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

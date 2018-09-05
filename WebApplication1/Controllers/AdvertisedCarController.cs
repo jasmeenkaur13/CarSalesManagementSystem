@@ -4,31 +4,42 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace WebApplication1.Controllers
+/// <summary>
+/// 
+/// </summary>
+namespace WebServices.Controllers
 {
+    /// <summary>
+    /// Car Details controller
+    /// </summary>
     public class AdvertisedCarController : ApiController
     {
         private readonly IAdvertiseCarDetailsService _advertiseCarDetailsService;
+        private readonly IOwnerValidationService _ownerValidationService;
 
         /// <summary>
         /// Public constructor to initialize product service instance
         /// </summary>
-        public AdvertisedCarController(IAdvertiseCarDetailsService advertiseCarDetailsService)
+        public AdvertisedCarController(IAdvertiseCarDetailsService advertiseCarDetailsService, IOwnerValidationService ownerValidationService)
         {
             _advertiseCarDetailsService = advertiseCarDetailsService;
+            _ownerValidationService = ownerValidationService;
+
         }
 
         /// <summary>
-        /// 
+        /// fetched the list of cars advertised
         /// </summary>
         /// <returns></returns>
-        public HttpResponseMessage Get(string make, string year, string model)
+        public IList<AdvertisedCarDTO> Get(string make, string year, string model)
         {
-             
+            var cars = _advertiseCarDetailsService.GetListOfAdvertisedCars(make, year, model);
+            return cars;
+
         }
 
         /// <summary>
-        /// 
+        /// Insert the car details
         /// </summary>
         /// <param name="carDetailsDTO"></param>
         /// <returns></returns>
@@ -40,12 +51,19 @@ namespace WebApplication1.Controllers
             }
             else
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _advertiseCarDetailsService.CreateAdvertiseCarDetailsEntry(carDetailsDTO).ToString() + " Inserted successfully");
+                if (_ownerValidationService.ValidateOwnerType(carDetailsDTO.OwnerDetails))
+                {
+                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, _advertiseCarDetailsService.CreateAdvertiseCarDetailsEntry(carDetailsDTO).ToString() + " Inserted successfully");
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Incompleted details for the owner type");
+                }
             }
         }
 
         /// <summary>
-        /// 
+        /// Update the car details
         /// </summary>
         /// <param name="id"></param>
         /// <param name="carDetailsDTO"></param>
@@ -60,13 +78,20 @@ namespace WebApplication1.Controllers
             {
                 if (id > 0)
                 {
-                    if (_advertiseCarDetailsService.UpdateAdvertiseCarDetailsEntry(id, carDetailsDTO))
+                    if (_ownerValidationService.ValidateOwnerType(carDetailsDTO.OwnerDetails))
                     {
-                        return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Updated Successfully");
+                        if (_advertiseCarDetailsService.UpdateAdvertiseCarDetailsEntry(id, carDetailsDTO))
+                        {
+                            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Updated Successfully");
+                        }
+                        else
+                        {
+                            return Request.CreateErrorResponse(System.Net.HttpStatusCode.InternalServerError, "Some Error Occured");
+                        }
                     }
                     else
                     {
-                        return Request.CreateErrorResponse(System.Net.HttpStatusCode.InternalServerError, "Some Error Occured");
+                        return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Incompleted details for the owner type");
                     }
                 }
                 return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Id does not exist");
@@ -74,7 +99,7 @@ namespace WebApplication1.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Delete the Car details
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
