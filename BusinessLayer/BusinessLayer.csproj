@@ -31,8 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,10 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\OwnerService.cs" />
-    <Compile Include="ServiceContracts\IAdvertiseCarService.cs" />
-    <Compile Include="ServiceContracts\IOwnerService.cs" />
+    <Compile Include="ServiceContracts\Services\ICarOwnerReferenceService.cs" />
+    <Compile Include="ServiceContracts\Services\IAdvertiseCarDetailsService.cs" />
+    <Compile Include="ServiceContracts\Validation\IOwnerValidationService.cs" />
+    <Compile Include="Services\ApplicationServices\AdvertisedCarDetailService.cs" />
+    <Compile Include="Services\ApplicationServices\AdvertisedCarService.cs" />
+    <Compile Include="Services\ApplicationServices\CarOwnerReferenceService.cs" />
+    <Compile Include="Services\ApplicationServices\OwnerService.cs" />
+    <Compile Include="ServiceContracts\Services\IAdvertiseCarService.cs" />
+    <Compile Include="ServiceContracts\Services\IOwnerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ValidationServices\OwnerValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModels\DataModels.csproj">
@@ -55,6 +69,12 @@
       <Project>{6138200A-AE26-4945-B6A3-38F291ECE77F}</Project>
       <Name>DataTransferObjects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

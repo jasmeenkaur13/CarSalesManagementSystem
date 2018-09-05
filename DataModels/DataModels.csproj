@@ -69,7 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarSalesDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="GenericRepository\GenericRepository.cs" />
     <Compile Include="Owner.cs">
       <DependentUpon>CarSalesDb.tt</DependentUpon>

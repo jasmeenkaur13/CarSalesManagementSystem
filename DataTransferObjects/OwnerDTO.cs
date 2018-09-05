@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using System.ComponentModel.DataAnnotations;
+/// <summary>
 /// 
 /// </summary>
 namespace DataTransferObjects
@@ -15,14 +16,17 @@ namespace DataTransferObjects
         /// <summary>
         /// Name of the person , if the owner type is private
         /// </summary>
+        [Required(AllowEmptyStrings = false, ErrorMessage = "The name can not be empty")]    
         public string Name { get; set; }
         /// <summary>
         /// Phone number of the person , if the owner type is private
         /// </summary>
+        [Phone(ErrorMessage = "Please enter a valid value")]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// Email ID of the owner
         /// </summary>
+        [EmailAddress(ErrorMessage = "Please Enter a valid value")]
         public string Email { get; set; }
         /// <summary>
         /// ABN of the dealer , if the owner type is dealer
@@ -31,6 +35,8 @@ namespace DataTransferObjects
         /// <summary>
         /// Owner Type : Private/Dealer
         /// </summary>
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Enter the owner type")]
+        [RegularExpression("[[P|p|D|d]", ErrorMessage = "Not a valid Owner type")]
         public string OwnerType { get; set; }
         /// <summary>
         /// Comments added by the customer

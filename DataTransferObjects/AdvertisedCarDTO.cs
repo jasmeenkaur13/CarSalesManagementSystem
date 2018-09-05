@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using System.ComponentModel.DataAnnotations;
+/// <summary>
 /// namespace to hold the detals of Data transfer Obejects
 /// </summary>
 namespace DataTransferObjects
@@ -15,18 +16,24 @@ namespace DataTransferObjects
         /// <summary>
         /// Year of the car make
         /// </summary>
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Year can not be Empty")]
+        [RegularExpression("([0-9]+)")]
+        [StringLength(4, ErrorMessage = "Max 4 digits")]
         public string Year { get; set; }
         /// <summary>
         /// Make/Company of the car who made ot
         /// </summary>
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Make can not be Empty")]
         public string Make { get; set; }
         /// <summary>
         /// Variant Name of the car
         /// </summary>
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Model can not be Empty")]
         public string Model { get; set; }
         /// <summary>
         /// Type of Advertisement
         /// </summary>
+        [RegularExpression("[[E|e][C|c][G|g]|[D|d][A|a][P|p]]", ErrorMessage ="Not a valid Price type")]
         public string AdvertisedPriceType { get; set; }
         /// <summary>
         /// excluding government charges (EGC)
