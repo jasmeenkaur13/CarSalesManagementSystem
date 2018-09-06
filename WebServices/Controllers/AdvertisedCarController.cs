@@ -4,6 +4,7 @@ using Shared.Logger;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
+using WebServices.Constants;
 
 /// <summary>
 /// 
@@ -61,12 +62,12 @@ namespace WebServices.Controllers
                 if (_ownerValidationService.ValidateOwnerType(carDetailsDTO.OwnerDetails))
                 {
                     _logger.log.Info("Inserting ends");
-                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, _advertiseCarDetailsService.CreateAdvertiseCarDetailsEntry(carDetailsDTO).ToString() + " Inserted successfully");
+                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, _advertiseCarDetailsService.CreateAdvertiseCarDetailsEntry(carDetailsDTO).ToString() + WebConstants.InsertionMessage);
                 }
                 else
                 {
                     _logger.log.Info("Inserting ends");
-                    return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Incompleted details for the owner type");
+                    return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, WebConstants.OwnerTypeValidationMessage);
                 }
             }
 
@@ -94,22 +95,22 @@ namespace WebServices.Controllers
                         if (_advertiseCarDetailsService.UpdateAdvertiseCarDetailsEntry(id, carDetailsDTO))
                         {
                             _logger.log.Info("Updating ends for " + id.ToString());
-                            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Updated Successfully");
+                            return Request.CreateResponse(System.Net.HttpStatusCode.OK, WebConstants.UpdationMessage);
                         }
                         else
                         {
                             _logger.log.Info("Updating ends for " + id.ToString());
-                            return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Id does not exist");
+                            return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, WebConstants.IDDoesNotExist);
                         }
                     }
                     else
                     {
                         _logger.log.Info("Updating ends for " + id.ToString());
-                        return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Incompleted details for the owner type");
+                        return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, WebConstants.OwnerTypeValidationMessage);
                     }
                 }
                 _logger.log.Info("Updating ends for " + id.ToString());
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Id does not exist");
+                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, WebConstants.IDDoesNotExist);
             }
         }
 
@@ -126,11 +127,11 @@ namespace WebServices.Controllers
                 if (_advertiseCarDetailsService.DeleteAdvertiseCarDetailsEntry(id))
                 {
                     _logger.log.Info("Deleting ends for " + id.ToString());
-                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Deleted succesfully");
+                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, WebConstants.DeletionMessage);
                 }
             }
             _logger.log.Info("Deleting ends for " + id.ToString());
-            return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "Id does not exist");
+            return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, WebConstants.IDDoesNotExist);
         }
     }
 }

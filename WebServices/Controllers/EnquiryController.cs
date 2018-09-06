@@ -1,7 +1,9 @@
 ﻿using BusinessLayer;
 using DataTransferObjects;
+using Shared.Logger;
 using System.Net.Http;
 using System.Web.Http;
+using WebServices.Constants;
 
 /// <summary>
 /// 
@@ -17,13 +19,15 @@ namespace WebServices.Controllers
         /// Enquiry Service property
         /// </summary>
         private readonly IEnquiryService _enquiryService;
+        private readonly GlobalLogger _logger;
 
         /// <summary>
         /// Public constructor to initialize enquiry service instance
         /// </summary>
-        public EnquiryController(IEnquiryService enquiryService)
+        public EnquiryController(IEnquiryService enquiryService, GlobalLogger logger)
         {
-            _enquiryService = enquiryService;
+            this._enquiryService = enquiryService;
+            this._logger = logger;
         }
 
         /// <summary>
@@ -33,13 +37,16 @@ namespace WebServices.Controllers
         /// <returns></returns>
         public HttpResponseMessage Post([FromBody]EnquiryDTO enquiryDTO)
         {
+            this._logger.log.Info("Insertion Starts");
             if (!ModelState.IsValid)
             {
+                this._logger.log.Info("Insertion ends");
                 return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, ModelState);
             }
             else
             {
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, _enquiryService.CreateEnquiry(enquiryDTO).ToString() + " Inserted successfully");
+                this._logger.log.Info("Insertion ends");
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK, this._enquiryService.CreateEnquiry(enquiryDTO).ToString() + WebConstants.InsertionMessage);
             }
         }
     }

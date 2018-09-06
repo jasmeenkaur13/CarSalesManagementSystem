@@ -33,7 +33,6 @@ namespace DataTransferObjects
         /// <summary>
         /// Type of Advertisement
         /// </summary>
-        [RegularExpression("[[E|e][C|c][G|g]|[D|d][A|a][P|p]]", ErrorMessage ="Not a valid Price type")]
         public string AdvertisedPriceType { get; set; }
         /// <summary>
         /// excluding government charges (EGC)

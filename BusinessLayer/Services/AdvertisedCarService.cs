@@ -11,7 +11,7 @@ using System.Linq;
 namespace BusinessLayer
 {
     /// <summary>
-    /// 
+    /// class for CRUD operation of Advertise cars
     /// </summary>
     public class AdvertisedCarService : IAdvertiseCarService
     {
@@ -42,8 +42,8 @@ namespace BusinessLayer
                 AdvertisedPriceType = advertiseCarDTO.AdvertisedPriceType,
                 Model = advertiseCarDTO.Model
             };
-            _unitOfWork.AdvertsedCarRepository.Insert(car);
-            _unitOfWork.Save();
+            this._unitOfWork.AdvertsedCarRepository.Insert(car);
+            this._unitOfWork.Save();
             return car.ID;
 
         }
@@ -60,7 +60,7 @@ namespace BusinessLayer
             if (advertiseCarDTO != null)
             {
 
-                var car = _unitOfWork.AdvertsedCarRepository.GetByID(advertiseCarId);
+                var car = this._unitOfWork.AdvertsedCarRepository.GetByID(advertiseCarId);
                 if (car != null)
                 {
                     car.Year = advertiseCarDTO.Year;
@@ -88,12 +88,12 @@ namespace BusinessLayer
             var success = false;
             if (advertiseCarId > 0)
             {
-                var car = _unitOfWork.AdvertsedCarRepository.GetByID(advertiseCarId);
+                var car = this._unitOfWork.AdvertsedCarRepository.GetByID(advertiseCarId);
                 if (car != null)
                 {
 
-                    _unitOfWork.AdvertsedCarRepository.Delete(car);
-                    _unitOfWork.Save();
+                    this._unitOfWork.AdvertsedCarRepository.Delete(car);
+                    this._unitOfWork.Save();
                     success = true;
                 }
             }
@@ -102,7 +102,7 @@ namespace BusinessLayer
 
         public IList<AdvertisedCarDTO> GetListOfAdvertisedCars(string make, string year, string model)
         {
-            var carReference = _unitOfWork.AdvertsedCarRepository.GetMany(x => string.Equals(x.Model, string.IsNullOrWhiteSpace(model) ? x.Model : model) &&
+            var carReference = this._unitOfWork.AdvertsedCarRepository.GetMany(x => string.Equals(x.Model, string.IsNullOrWhiteSpace(model) ? x.Model : model) &&
             string.Equals(x.Year, string.IsNullOrWhiteSpace(year) ? x.Year : year) &&
             string.Equals(x.Make, string.IsNullOrWhiteSpace(make) ? x.Make : make)
             ).ToList();

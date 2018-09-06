@@ -1,9 +1,3 @@
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.dll
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.pdb
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csprojAssemblyReference.cache
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csproj.CoreCompileInputs.cache
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.dll
-C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.pdb
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.dll
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.pdb
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\bin\Debug\log4net.dll
@@ -13,3 +7,12 @@ C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransf
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csproj.CopyComplete
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.dll
 C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.pdb
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.dll
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\DataTransferObjects.pdb
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\log4net.dll
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\bin\Debug\log4net.xml
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csprojAssemblyReference.cache
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csproj.CoreCompileInputs.cache
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.csproj.CopyComplete
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.dll
+C:\Users\jatin.a.dhingra\source\repos\CarSalesManagementSystem\DataTransferObjects\obj\Debug\DataTransferObjects.pdb

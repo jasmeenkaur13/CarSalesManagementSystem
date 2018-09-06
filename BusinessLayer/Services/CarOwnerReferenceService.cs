@@ -10,7 +10,7 @@ using System.Linq;
 namespace BusinessLayer
 {
     /// <summary>
-    /// 
+    /// Class to maintain car owner refrence service.
     /// </summary>
     public class CarOwnerReferenceService: ICarOwnerReferenceService
     {
@@ -21,7 +21,7 @@ namespace BusinessLayer
         /// </summary>
         public CarOwnerReferenceService(UnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace BusinessLayer
                 CarId = carReferenceDTO.CarId,
                 OwnerId = carReferenceDTO.OwnerId
             };
-            _unitOfWork.CarOwnerRepository.Insert(carReference);
-            _unitOfWork.Save();
+            this._unitOfWork.CarOwnerRepository.Insert(carReference);
+            this._unitOfWork.Save();
             return carReference.Id;
            
         }
@@ -52,12 +52,12 @@ namespace BusinessLayer
             var success = false;
             if (carRefernceId > 0)
             {
-               var refernce = _unitOfWork.CarOwnerRepository.GetByID(carRefernceId);
+               var refernce = this._unitOfWork.CarOwnerRepository.GetByID(carRefernceId);
                 if (refernce != null)
                 {
 
-                    _unitOfWork.OwnerRepository.Delete(refernce);
-                    _unitOfWork.Save();
+                    this._unitOfWork.OwnerRepository.Delete(refernce);
+                    this._unitOfWork.Save();
                     success = true;
                 }
             }
@@ -70,7 +70,7 @@ namespace BusinessLayer
         /// <param name="carId"></param>
         /// <returns></returns>
         public CarOwnerRefernceDTO GetByCarID(int carId) {
-            var carReference = _unitOfWork.CarOwnerRepository.GetMany(x => x.CarId == carId).FirstOrDefault();
+            var carReference = this._unitOfWork.CarOwnerRepository.GetMany(x => x.CarId == carId).FirstOrDefault();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Owners_Cars_Ref, CarOwnerRefernceDTO>();
             });

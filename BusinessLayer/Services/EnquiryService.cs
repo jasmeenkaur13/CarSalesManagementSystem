@@ -8,7 +8,7 @@ using DataTransferObjects;
 namespace BusinessLayer
 {
     /// <summary>
-    /// 
+    /// Class to implement Enquiry Service 
     /// </summary>
     public class EnquiryService: IEnquiryService
     {
@@ -19,7 +19,7 @@ namespace BusinessLayer
         /// </summary>
         public EnquiryService(UnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace BusinessLayer
                     Email = enquiryDTO.Email,
                     PhoneNumber = enquiryDTO.PhoneNumber
                 };
-            _unitOfWork.EnquiryRepository.Insert(enquiry);
-            _unitOfWork.Save();
+            this._unitOfWork.EnquiryRepository.Insert(enquiry);
+            this._unitOfWork.Save();
             return enquiry.EnquiryId;
            
         }

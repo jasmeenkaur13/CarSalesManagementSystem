@@ -9,21 +9,21 @@ using DataTransferObjects;
 namespace BusinessLayer
 {
     /// <summary>
-    /// 
+    /// Class to Implement Owner Validation Service
     /// </summary>
     public class OwnerValidationService: IOwnerValidationService
     {
         /// <summary>
-        /// 
+        /// Type of Owner constant
         /// </summary>
         private readonly string PrivateOwner = "P";
         /// <summary>
-        /// 
+        /// Type of Dealer Constant
         /// </summary>
         private readonly string Dealer = "D";
 
         /// <summary>
-        /// 
+        /// Validates the type of Owner
         /// </summary>
         /// <param name="ownerDTO"></param>
         /// <returns></returns>

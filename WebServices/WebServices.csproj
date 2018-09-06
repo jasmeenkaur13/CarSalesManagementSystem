@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Constants\WebConstants.cs" />
     <Compile Include="Controllers\EnquiryController.cs" />
     <Compile Include="Controllers\AdvertisedCarController.cs" />
     <Compile Include="Global.asax.cs">

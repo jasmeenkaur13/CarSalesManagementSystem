@@ -14,7 +14,6 @@ namespace DataTransferObjects.Tests
         #region  Validate Car Model Test Case
 
         #region YearFieldValidation
-
         
         /// <summary>
         /// Year is Required
@@ -74,6 +73,7 @@ namespace DataTransferObjects.Tests
         }
 
         #endregion
+
         #region Make
         /// <summary>
         /// Make is Required
@@ -90,8 +90,9 @@ namespace DataTransferObjects.Tests
             var valid = Validator.TryValidateObject(model, context, result, true);
 
             Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Make can not be Empty");
-            Assert.IsTrue(result[0].MemberNames.Contains("Make"));
+            var match = result.Where(x => x.ErrorMessage.Equals("Make can not be Empty")).FirstOrDefault();
+            Assert.IsTrue(match != null);
+            Assert.IsTrue(match.MemberNames.Contains("Make"));
         }
 
         /// <summary>
@@ -109,12 +110,12 @@ namespace DataTransferObjects.Tests
             var valid = Validator.TryValidateObject(model, context, result, true);
 
             Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Make can not be Empty");
-            Assert.IsTrue(result[0].MemberNames.Contains("Make"));
+            var match = result.Where(x => x.ErrorMessage.Equals("Make can not be Empty")).FirstOrDefault();
+            Assert.IsTrue(match != null);
+            Assert.IsTrue(match.MemberNames.Contains("Make"));
         }
 
         #endregion
-
 
         #region Model
         /// <summary>
@@ -132,8 +133,9 @@ namespace DataTransferObjects.Tests
             var valid = Validator.TryValidateObject(model, context, result, true);
 
             Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Model can not be Empty");
-            Assert.IsTrue(result[0].MemberNames.Contains("Model"));
+            var match = result.Where(x => x.ErrorMessage.Equals("Model can not be Empty")).FirstOrDefault();
+            Assert.IsTrue(match != null);
+            Assert.IsTrue(match.MemberNames.Contains("Model"));
         }
 
         /// <summary>
@@ -151,55 +153,15 @@ namespace DataTransferObjects.Tests
             var valid = Validator.TryValidateObject(model, context, result, true);
 
             Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Model can not be Empty");
-            Assert.IsTrue(result[0].MemberNames.Contains("Model"));
+            var match = result.Where(x => x.ErrorMessage.Equals("Model can not be Empty")).FirstOrDefault();
+            Assert.IsTrue(match != null);
+            Assert.IsTrue(match.MemberNames.Contains("Model"));
         }
 
         #endregion
 
-
-        #region AdvertisedPriceType
         /// <summary>
-        /// AdvertisedPriceType with digits
-        /// </summary>
-        [TestMethod]
-        public void AdvertisedPriceTypeWithDigits()
-        {
-            // Arrange
-            var model = new AdvertisedCarDTO() { AdvertisedPriceType  = "d453"};
-            var context = new ValidationContext(model, null, null);
-            var result = new List<ValidationResult>();
-
-            // Act
-            var valid = Validator.TryValidateObject(model, context, result, true);
-
-            Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Not a valid Price type");
-            Assert.IsTrue(result[0].MemberNames.Contains("AdvertisedPriceType"));
-        }
-
-        /// <summary>
-        /// AdvertisedPriceType is empty
-        /// </summary>
-        [TestMethod]
-        public void AdvertisedPriceTypeEmpty()
-        {
-            // Arrange
-            var model = new AdvertisedCarDTO() { AdvertisedPriceType = "" };
-            var context = new ValidationContext(model, null, null);
-            var result = new List<ValidationResult>();
-
-            // Act
-            var valid = Validator.TryValidateObject(model, context, result, true);
-
-            Assert.IsFalse(valid);
-            Assert.AreEqual(result[0].ErrorMessage, "Not a valid Price type");
-            Assert.IsTrue(result[0].MemberNames.Contains("AdvertisedPriceType"));
-        }
-
-        #endregion
-        /// <summary>
-        /// Owner Type is p
+        /// valid values test case
         /// </summary>
         [TestMethod]
         public void ValidValues()

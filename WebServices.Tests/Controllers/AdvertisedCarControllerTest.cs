@@ -49,11 +49,11 @@ namespace WebServices.Tests.Controllers
         [TestMethod]
         public void Post()
         {
-            int a = 1;
+            int carID = 1;
            // bool yes = true;
 
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            var ab = new AdvertisedCarDetailsDTO
+            var carDetailObject = new AdvertisedCarDetailsDTO
             {
                 CarDetails = new AdvertisedCarDTO
                 {
@@ -77,7 +77,7 @@ namespace WebServices.Tests.Controllers
                     Comments = "sample string 7",
                 }
             };
-            mockRepositorycar.Setup(x => x.CreateAdvertiseCarDetailsEntry(ab)).Returns(a);
+            mockRepositorycar.Setup(x => x.CreateAdvertiseCarDetailsEntry(carDetailObject)).Returns(carID);
 
 
             // Arrange
@@ -85,7 +85,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Post(ab);
+            var response = controller.Post(carDetailObject);
             string succesful;
             Assert.IsTrue(response.TryGetContentValue<string>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
@@ -100,7 +100,7 @@ namespace WebServices.Tests.Controllers
         {
 
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            var ab = new AdvertisedCarDetailsDTO
+            var carDetailObject = new AdvertisedCarDetailsDTO
             {
                 CarDetails = new AdvertisedCarDTO
                 {
@@ -130,7 +130,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Post(ab);
+            var response = controller.Post(carDetailObject);
             HttpError succesful;
             Assert.IsTrue(response.TryGetContentValue<HttpError>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
@@ -142,11 +142,11 @@ namespace WebServices.Tests.Controllers
         [TestMethod]
         public void Put()
         {
-            int a = 1;
+            int carID = 1;
             // bool yes = true;
 
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            var ab = new AdvertisedCarDetailsDTO
+            var carDetailObject = new AdvertisedCarDetailsDTO
             {
                 CarDetails = new AdvertisedCarDTO
                 {
@@ -170,7 +170,7 @@ namespace WebServices.Tests.Controllers
                     Comments = "sample string 7",
                 }
             };
-            mockRepositorycar.Setup(x => x.UpdateAdvertiseCarDetailsEntry(a,ab)).Returns(true);
+            mockRepositorycar.Setup(x => x.UpdateAdvertiseCarDetailsEntry(carID,carDetailObject)).Returns(true);
 
 
             // Arrange
@@ -178,7 +178,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Put(a,ab);
+            var response = controller.Put(carID,carDetailObject);
             string succesful;
             Assert.IsTrue(response.TryGetContentValue<string>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
@@ -191,9 +191,9 @@ namespace WebServices.Tests.Controllers
         [TestMethod]
         public void PutWithIncomleteValuesForOwnerType()
         {
-            int a = 1;
+            int carID = 1;
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            var ab = new AdvertisedCarDetailsDTO
+            var carDetailObject = new AdvertisedCarDetailsDTO
             {
                 CarDetails = new AdvertisedCarDTO
                 {
@@ -223,7 +223,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Put(a,ab);
+            var response = controller.Put(carID,carDetailObject);
             HttpError succesful;
             Assert.IsTrue(response.TryGetContentValue<HttpError>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
@@ -236,7 +236,7 @@ namespace WebServices.Tests.Controllers
         public void PutWithInvalidId()
         {
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            var ab = new AdvertisedCarDetailsDTO
+            var carDetailObject = new AdvertisedCarDetailsDTO
             {
                 CarDetails = new AdvertisedCarDTO
                 {
@@ -266,7 +266,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Put(0, ab);
+            var response = controller.Put(0, carDetailObject);
             HttpError succesful;
             Assert.IsTrue(response.TryGetContentValue<HttpError>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
@@ -278,10 +278,10 @@ namespace WebServices.Tests.Controllers
         [TestMethod]
         public void Delete()
         {
-            int a = 1;
+            int carID = 1;
 
             var mockRepositorycar = new Mock<IAdvertiseCarDetailsService>();
-            mockRepositorycar.Setup(x => x.DeleteAdvertiseCarDetailsEntry(a)).Returns(true);
+            mockRepositorycar.Setup(x => x.DeleteAdvertiseCarDetailsEntry(carID)).Returns(true);
 
 
             // Arrange
@@ -289,7 +289,7 @@ namespace WebServices.Tests.Controllers
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
-            var response = controller.Delete(a);
+            var response = controller.Delete(carID);
             string succesful;
             Assert.IsTrue(response.TryGetContentValue<string>(out succesful));
             Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);

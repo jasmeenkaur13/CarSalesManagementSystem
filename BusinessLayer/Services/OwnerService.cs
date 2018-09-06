@@ -8,7 +8,7 @@ using DataTransferObjects;
 namespace BusinessLayer
 {
     /// <summary>
-    /// 
+    /// Class to Implement Owner Service
     /// </summary>
     public class OwnerService: IOwnerService
     {
@@ -19,7 +19,7 @@ namespace BusinessLayer
         /// </summary>
         public OwnerService(UnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
         
@@ -41,8 +41,8 @@ namespace BusinessLayer
                     DealerABN = ownerDTO.DealerABN,
                     OwnerType = ownerDTO.OwnerType
                 };
-            _unitOfWork.OwnerRepository.Insert(owner);
-            _unitOfWork.Save();
+            this._unitOfWork.OwnerRepository.Insert(owner);
+            this._unitOfWork.Save();
             return owner.Id;
            
         }
@@ -59,7 +59,7 @@ namespace BusinessLayer
             if (ownerDTO != null)
             {
             
-                var owner = _unitOfWork.OwnerRepository.GetByID(ownerId);
+                var owner = this._unitOfWork.OwnerRepository.GetByID(ownerId);
                 if (owner != null)
                 {
                     owner.Comments = ownerDTO.Comments;
@@ -68,8 +68,8 @@ namespace BusinessLayer
                     owner.PhoneNumber = ownerDTO.PhoneNumber;
                     owner.DealerABN = ownerDTO.DealerABN;
                     owner.OwnerType = ownerDTO.OwnerType;
-                    _unitOfWork.OwnerRepository.Update(owner);
-                    _unitOfWork.Save();
+                    this._unitOfWork.OwnerRepository.Update(owner);
+                    this._unitOfWork.Save();
                     success = true;
                 }
             }
@@ -86,11 +86,11 @@ namespace BusinessLayer
             var success = false;
             if (ownerId > 0)
             {
-               var owner = _unitOfWork.OwnerRepository.GetByID(ownerId);
+               var owner = this._unitOfWork.OwnerRepository.GetByID(ownerId);
                 if (owner != null)
                 {
-                    _unitOfWork.OwnerRepository.Delete(owner);
-                    _unitOfWork.Save();
+                    this._unitOfWork.OwnerRepository.Delete(owner);
+                    this._unitOfWork.Save();
                     success = true;
                 }
             }

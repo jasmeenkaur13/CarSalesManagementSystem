@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvertisedCarDTOTest.cs" />
+    <Compile Include="EnquiryDTOTest.cs" />
     <Compile Include="OwnerDTOTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

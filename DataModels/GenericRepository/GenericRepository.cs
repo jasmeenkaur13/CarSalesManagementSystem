@@ -1,15 +1,11 @@
-﻿#region Using Namespaces...
-
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-
-#endregion
-
-namespace DataModels.GenericRepository
+﻿namespace DataModels.GenericRepository
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+
     /// <summary>
     /// Generic Repository class for Entity Operations
     /// </summary>
@@ -41,7 +37,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> Get()
         {
-            IQueryable<TEntity> query = DbSet;
+            IQueryable<TEntity> query = this.DbSet;
             return query.ToList();
         }
 
@@ -52,7 +48,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public virtual TEntity GetByID(object id)
         {
-            return DbSet.Find(id);
+            return this.DbSet.Find(id);
         }
 
         /// <summary>
@@ -61,7 +57,7 @@ namespace DataModels.GenericRepository
         /// <param name="entity"></param>
         public virtual void Insert(TEntity entity)
         {
-            DbSet.Add(entity);
+            this.DbSet.Add(entity);
         }
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace DataModels.GenericRepository
         /// <param name="id"></param>
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = DbSet.Find(id);
+            TEntity entityToDelete = this.DbSet.Find(id);
             Delete(entityToDelete);
         }
 
@@ -82,9 +78,9 @@ namespace DataModels.GenericRepository
         {
             if (Context.Entry(entityToDelete).State == System.Data.Entity.EntityState.Detached)
             {
-                DbSet.Attach(entityToDelete);
+                this.DbSet.Attach(entityToDelete);
             }
-            DbSet.Remove(entityToDelete);
+            this.DbSet.Remove(entityToDelete);
         }
 
         /// <summary>
@@ -93,7 +89,7 @@ namespace DataModels.GenericRepository
         /// <param name="entityToUpdate"></param>
         public virtual void Update(TEntity entityToUpdate)
         {
-            DbSet.Attach(entityToUpdate);
+            this.DbSet.Attach(entityToUpdate);
             Context.Entry(entityToUpdate).State = System.Data.Entity.EntityState.Modified;
         }
 
@@ -104,7 +100,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> GetMany(Func<TEntity, bool> where)
         {
-            return DbSet.Where(where).ToList();
+            return this.DbSet.Where(where).ToList();
         }
 
         /// <summary>
@@ -114,7 +110,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public virtual IQueryable<TEntity> GetManyQueryable(Func<TEntity, bool> where)
         {
-            return DbSet.Where(where).AsQueryable();
+            return this.DbSet.Where(where).AsQueryable();
         }
 
         /// <summary>
@@ -124,7 +120,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public TEntity Get(Func<TEntity, Boolean> where)
         {
-            return DbSet.Where(where).FirstOrDefault<TEntity>();
+            return this.DbSet.Where(where).FirstOrDefault<TEntity>();
         }
 
         /// <summary>
@@ -134,9 +130,9 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public void Delete(Func<TEntity, Boolean> where)
         {
-            IQueryable<TEntity> objects = DbSet.Where<TEntity>(where).AsQueryable();
+            IQueryable<TEntity> objects = this.DbSet.Where<TEntity>(where).AsQueryable();
             foreach (TEntity obj in objects)
-                DbSet.Remove(obj);
+                this.DbSet.Remove(obj);
         }
 
         /// <summary>
@@ -145,7 +141,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> GetAll()
         {
-            return DbSet.ToList();
+            return this.DbSet.ToList();
         }
 
         /// <summary>
@@ -154,9 +150,7 @@ namespace DataModels.GenericRepository
         /// <param name="predicate"></param>
         /// <param name="include"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetWithInclude(
-            System.Linq.Expressions.Expression<Func<TEntity,
-            bool>> predicate, params string[] include)
+        public IQueryable<TEntity> GetWithInclude( System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate, params string[] include)
         {
             IQueryable<TEntity> query = this.DbSet;
             query = include.Aggregate(query, (current, inc) => current.Include(inc));
@@ -170,7 +164,7 @@ namespace DataModels.GenericRepository
         /// <returns></returns>
         public bool Exists(object primaryKey)
         {
-            return DbSet.Find(primaryKey) != null;
+            return this.DbSet.Find(primaryKey) != null;
         }
 
         /// <summary>
@@ -180,7 +174,7 @@ namespace DataModels.GenericRepository
         /// <returns>A single record that matches the specified criteria</returns>
         public TEntity GetSingle(Func<TEntity, bool> predicate)
         {
-            return DbSet.Single<TEntity>(predicate);
+            return this.DbSet.Single<TEntity>(predicate);
         }
 
         /// <summary>
@@ -190,7 +184,7 @@ namespace DataModels.GenericRepository
         /// <returns>A single record containing the first record matching the specified criteria</returns>
         public TEntity GetFirst(Func<TEntity, bool> predicate)
         {
-            return DbSet.First<TEntity>(predicate);
+            return this.DbSet.First<TEntity>(predicate);
         }
 
         #endregion
