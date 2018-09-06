@@ -30,7 +30,7 @@ namespace BusinessLayer
         public bool ValidateOwnerType(OwnerDTO ownerDTO) {
             bool isValid = true;
             if ((string.Equals(ownerDTO.OwnerType, Dealer, System.StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrWhiteSpace(ownerDTO.DealerABN)) ||
-                (string.Equals(ownerDTO.OwnerType, PrivateOwner, System.StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrWhiteSpace(ownerDTO.Name) && string.IsNullOrWhiteSpace(ownerDTO.PhoneNumber))
+                (string.Equals(ownerDTO.OwnerType, PrivateOwner, System.StringComparison.InvariantCultureIgnoreCase) && (string.IsNullOrWhiteSpace(ownerDTO.Name) || string.IsNullOrWhiteSpace(ownerDTO.PhoneNumber)))
                 ) {
                 isValid = false;
             }

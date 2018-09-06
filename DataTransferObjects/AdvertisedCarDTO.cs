@@ -17,8 +17,8 @@ namespace DataTransferObjects
         /// Year of the car make
         /// </summary>
         [Required(AllowEmptyStrings = false, ErrorMessage = "Year can not be Empty")]
-        [RegularExpression("([0-9]+)")]
-        [StringLength(4, ErrorMessage = "Max 4 digits")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please Enter Digits")]
+        [StringLength(4, ErrorMessage = "Year can be of max 4 digits")]
         public string Year { get; set; }
         /// <summary>
         /// Make/Company of the car who made ot

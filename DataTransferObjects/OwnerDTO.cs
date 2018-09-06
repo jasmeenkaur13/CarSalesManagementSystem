@@ -16,7 +16,7 @@ namespace DataTransferObjects
         /// <summary>
         /// Name of the person , if the owner type is private
         /// </summary>
-        [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Not a valid name")]
+        [RegularExpression("^[A-Za-z ]+", ErrorMessage = "Not a valid name")]
         public string Name { get; set; }
         /// <summary>
         /// Phone number of the person , if the owner type is private

@@ -56,7 +56,7 @@ namespace BusinessLayer
             if (advertiseCarDTO != null)
             {
                 var carReference = _carOwnerReferenceService.GetByCarID(advertiseCarId);
-                if (advertiseCarDTO.CarDetails != null)
+                if (advertiseCarDTO.CarDetails != null && carReference != null)
                 {
                     _advertiseCarService.UpdateAdvertiseCar(advertiseCarId, advertiseCarDTO.CarDetails);
                     success = true;
@@ -81,14 +81,14 @@ namespace BusinessLayer
             if (advertiseCarId != 0)
             {
                 var carReference = _carOwnerReferenceService.GetByCarID(advertiseCarId);
-                _advertiseCarService.DeleteAdvertiseCar(advertiseCarId);
                 if (carReference != null)
                 {
+                    _advertiseCarService.DeleteAdvertiseCar(advertiseCarId);
+
                     _ownerService.DeleteOwner(carReference.OwnerId);
                     _carOwnerReferenceService.DeleteCarOwnerReference(carReference.Id);
+                    success = true;
                 }
-                success = true;
-               
             }
             return success;
         }

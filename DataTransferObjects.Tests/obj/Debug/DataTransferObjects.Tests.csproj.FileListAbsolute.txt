@@ -1,0 +1,16 @@
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\DataTransferObjects.Tests.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\DataTransferObjects.Tests.pdb
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\DataTransferObjects.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\DataTransferObjects.pdb
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\obj\Debug\DataTransferObjects.Tests.csprojAssemblyReference.cache
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\obj\Debug\DataTransferObjects.Tests.csproj.CoreCompileInputs.cache
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\obj\Debug\DataTransferObjects.Tests.csproj.CopyComplete
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\obj\Debug\DataTransferObjects.Tests.dll
+C:\jasmeenKaur\CarSalesManagementSystem\DataTransferObjects.Tests\obj\Debug\DataTransferObjects.Tests.pdb

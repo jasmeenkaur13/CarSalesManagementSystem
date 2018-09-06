@@ -64,6 +64,11 @@ namespace BusinessLayer
             return success;
         }
 
+        /// <summary>
+        /// get the reference data by car Id.
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
         public CarOwnerRefernceDTO GetByCarID(int carId) {
             var carReference = _unitOfWork.CarOwnerRepository.GetMany(x => x.CarId == carId).FirstOrDefault();
             var config = new MapperConfiguration(cfg => {
